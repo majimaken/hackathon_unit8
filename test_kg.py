@@ -22,6 +22,8 @@ Created on Fri Feb 18 16:58:53 2022
 import pandas as pd
 import numpy as np
 
+np.random.seed(7)
+
 one = np.arange(1,22)
 two = np.arange(22, 40)
 three = np.arange(40,66)
