@@ -9,10 +9,16 @@ import matplotlib.pyplot as plt
 # import nltk
 # import sklearn as sk
 
-df = pd.read_csv("Task/production_line_optimization_first_log.csv")
-# print(df)
-df.time = pd.to_datetime(df.time)
+# from collections import Counter
+# from sklearn.datasets import load_iris
+# from sklearn.model_selection import train_test_split
 
-start = min(df.time)
-end = max(df.time)
-dif = end - start
+# print("Hello World")
+
+# test
+df = pd.read_csv("Task/production_line_optimization_first_log.csv")
+print(df)
+# df['SQRT Balance'] = np.sqrt((df['Balance']))
+# df.plot(x="Balance", y=["Deposits", "Withdrawls"])
+# plt.show()
+# plt.savefig("figs/test.png")
