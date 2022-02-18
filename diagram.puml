@@ -1,0 +1,28 @@
+@startuml
+participant "Waiting Lounge" 
+
+box "Line A"
+participant "Module 1"
+queue "Buffer 1.2"
+queue "Buffer 1.1"
+participant "Module 2"
+queue "Buffer 2.2"
+queue "Buffer 2.1"
+participant "Module 3"
+end box
+
+box "Line B"
+participant "Module 1"
+queue "Buffer 1.2"
+queue "Buffer 1.1"
+participant "Module 2"
+queue "Buffer 2.2"
+queue "Buffer 2.1"
+participant "Module 3"
+end box
+
+"Waiting Lounge" -> "Module 1"
+"Module 1" -> "Module 2"
+"Module 2" -> "Module 3"
+
+@enduml
