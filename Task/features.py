@@ -3,7 +3,11 @@ from sklearn.datasets import make_regression
 from sklearn.linear_model import LinearRegression
 from matplotlib import pyplot
 # define dataset
-X, y = make_regression(n_samples=1000, n_features=69, n_informative=5, random_state=1)
+
+y = dat_3['productivity']
+X = dat_3.loc[:, dat_3.columns != 'productivity']
+
+# X, y = make_regression(n_samples=1000, n_features=69, n_informative=5, random_state=1)
 # define the model
 model = LinearRegression()
 # fit the model
