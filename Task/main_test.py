@@ -81,17 +81,17 @@ if __name__ == '__main__':
     # ############################################################
     #
     # resource retrieval needs to follow the format dict("challenge_id": integer)
-    submission_side_challenge = {"challenge_id": 3}  # the challenge id indicated in the documentation
-    response = requests.get('https://hackathon.unit8.com/api/get_resource',
-                            headers={'Authorization': f'Token {TOKEN_ID}', 'Content-Type': 'application/json'},
-                            json=submission_side_challenge
-                            )
-    print(response.json())
+    # submission_side_challenge = {"challenge_id": 3}  # the challenge id indicated in the documentation
+    # response = requests.get('https://hackathon.unit8.com/api/get_resource',
+    #                         headers={'Authorization': f'Token {TOKEN_ID}', 'Content-Type': 'application/json'},
+    #                         json=submission_side_challenge
+    #                         )
+    # print(response.json())
     
-    dic = response.json()
-    info = json.loads(dic)
+    # dic = response.json()
+    # info = json.loads(dic)
     
-    dat_3 = pd.read_json(dic, orient = "columns")
+    # dat_3 = pd.read_json(dic, orient = "columns")
     
     # df = pd.DataFrame.from_dict({(i,j): info[i][j] 
     #                        for i in info.keys() 
@@ -120,12 +120,12 @@ if __name__ == '__main__':
     # )
     # print(response.json())
 
-    # submission_side_challenge = {"challenge_id": 6,  # the challenge id indicated in the documentation
-    #                              "submission": "467"  # your solution
-    #                              }
-    # response = requests.post('https://hackathon.unit8.com/api/submit',
-    #                          headers={'Authorization': f'Token {TOKEN_ID}',
-    #                                   'Content-Type': 'application/json'},
-    #                          json=submission_side_challenge
-    #                          )
-    # print(response.json())
+    # submission_side_challenge = {"challenge_id": 4,  # the challenge id indicated in the documentation
+    #                               "submission": "8"  # your solution
+    #                               }
+    response = requests.post(
+                            'https://hackathon.unit8.com/api/submit',
+                                headers={'Authorization': 'Token fed877446aa8e41f956b19f86383d493a7a001a1'},
+                                json={'challenge_id': 4, 'submission': 8}
+                                ) 
+    print(response.json())
