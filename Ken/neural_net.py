@@ -44,23 +44,11 @@ Created on Sat Feb 19 10:35:20 2022
 
 
 import tensorflow as tf
-from sklearn.model_selection import train_test_split
 
-mnist = tf.keras.datasets.mnist
-(x_train, y_train), (x_test, y_test) = mnist.load_data()
-x_train, x_test = x_train / 255.0, x_test / 255.0
+model = tf.keras.models.Sequential()
+model.add(tf.keras.layers.Dense(10, input_shape=(2,2), use_bias = False, activation = "relu"))
 
-x_train, x_test, y_train, y_test = train_test_split(xdata)
-
-
-
-
-
-
-import os
-import pandas as pd
-
-df = pd.read_excel("")
-
+# Print the model parameters
+model.summary()
 
 
