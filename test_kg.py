@@ -47,11 +47,6 @@ Created on Fri Feb 18 16:58:53 2022
 # print(job_order)
 
 
-
-
-
-
-
 # Challenge 3 Productivity Factor
 #########################################
 
@@ -65,39 +60,37 @@ from sklearn.linear_model import LinearRegression
 from matplotlib import pyplot
 
 
-
-submission_side_challenge = {"challenge_id": 3}  # the challenge id indicated in the documentation
-response = requests.get('https://hackathon.unit8.com/api/get_resource',
-                        headers={'Authorization': f'Token {TOKEN_ID}', 'Content-Type': 'application/json'},
-                        json=submission_side_challenge
-                        )
-print(response.json())
-
-dic = response.json()
-info = json.loads(dic)
-
-dat_3 = pd.read_json(dic, orient = "columns")
-
-
-print(dat_3.head(10))
-
-y = dat_3['productivity']
-X = dat_3.loc[:, dat_3.columns != 'productivity']
-
-# X, y = make_regression(n_samples=1000, n_features=69, n_informative=5, random_state=1)
-# define the model
-model = LinearRegression()
-# fit the model
-model.fit(X, y)
-# get importance
-importance = model.coef_
-# summarize feature importance
-for i, v in enumerate(importance):
-    print('Feature: %0d, Score: %.5f' % (i, v))
-# plot feature importance
-pyplot.bar([x for x in range(len(importance))], importance)
-pyplot.show()
-
+# submission_side_challenge = {"challenge_id": 3}  # the challenge id indicated in the documentation
+# response = requests.get('https://hackathon.unit8.com/api/get_resource',
+#                         headers={'Authorization': f'Token {TOKEN_ID}', 'Content-Type': 'application/json'},
+#                         json=submission_side_challenge
+#                         )
+# print(response.json())
+#
+# dic = response.json()
+# info = json.loads(dic)
+#
+# dat_3 = pd.read_json(dic, orient = "columns")
+#
+#
+# print(dat_3.head(10))
+#
+# y = dat_3['productivity']
+# X = dat_3.loc[:, dat_3.columns != 'productivity']
+#
+# # X, y = make_regression(n_samples=1000, n_features=69, n_informative=5, random_state=1)
+# # define the model
+# model = LinearRegression()
+# # fit the model
+# model.fit(X, y)
+# # get importance
+# importance = model.coef_
+# # summarize feature importance
+# for i, v in enumerate(importance):
+#     print('Feature: %0d, Score: %.5f' % (i, v))
+# # plot feature importance
+# pyplot.bar([x for x in range(len(importance))], importance)
+# pyplot.show()
 
 
 # Challenge 4
@@ -107,19 +100,41 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 response_4 = requests.get('https://hackathon.unit8.com/api/get_resource',
-                        headers={'Authorization': 'Token fed877446aa8e41f956b19f86383d493a7a001a1'},
-                        json={'challenge_id': 4}
-                        )
+                          headers={'Authorization': 'Token fed877446aa8e41f956b19f86383d493a7a001a1'},
+                          json={'challenge_id': 4}
+                          )
 
-print(response_4.json())   
+print(response_4.json())
 
 dic_4 = response_4.json()
-dat_4 = pd.read_json(dic_4, orient = "columns")
+dat_4 = pd.read_json(dic_4, orient="columns")
+
+print(dat_4)
 
 
-sns.displot(dat_4["professional_mistakes"], kde = True)
-sns.plot()
+# copy the data
+dat_4_normalized = dat_4.copy()
 
+# apply normalization techniques on Column 1
+column = 'professional_mistakes'
+dat_4_normalized[column] = dat_4_normalized[column] / dat_4_normalized[column].abs().max()
+column = 'days_off'
+dat_4_normalized[column] = dat_4_normalized[column] / dat_4_normalized[column].abs().max()
+column = 'calls_made'
+dat_4_normalized[column] = dat_4_normalized[column] / dat_4_normalized[column].abs().max()
+column = 'sales_made'
+dat_4_normalized[column] = dat_4_normalized[column] / dat_4_normalized[column].abs().max()
+column = 'behaviour'
+dat_4_normalized[column] = dat_4_normalized[column] / dat_4_normalized[column].abs().max()
+
+dat_4_normalized['Sum'] = dat_4_normalized['behaviour'] - dat_4_normalized['professional_mistakes'] - \
+    dat_4_normalized['days_off'] + dat_4_normalized['calls_made'] + dat_4_normalized['sales_made']
+
+best = dat_4_normalized.nlargest(1, columns=['Sum'])
+print(best)
+
+# # view normalized data
+# print(max(dat_4_normalized['Sum']))
 
 
 # Create data set
