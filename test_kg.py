@@ -116,10 +116,11 @@ print(response_4.json())
 dic_4 = response_4.json()
 dat_4 = pd.read_json(dic_4, orient = "columns")
 
-plt.
 
 sns.displot(dat_4["professional_mistakes"], kde = True)
 sns.plot()
 
 
 
+# Create data set
+##############################
