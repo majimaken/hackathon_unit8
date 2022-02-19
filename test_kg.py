@@ -59,6 +59,7 @@ Created on Fri Feb 18 16:58:53 2022
 # import pandas as pd
 # import json
 # from pandas import json_normalize
+# import seaborn as sns
 
 # from sklearn.datasets import make_regression
 # from sklearn.linear_model import LinearRegression
@@ -80,6 +81,19 @@ Created on Fri Feb 18 16:58:53 2022
 
 
 # print(dat_3.head(10))
+
+
+# plt.figure(figsize=(12,10))
+# cor = dat_3.corr()
+# cor_2 = cor["productivity"]
+
+
+# sns.heatmap(cor, annot=True, cmap=plt.cm.Reds)
+# plt.show()
+
+
+
+
 
 # y = dat_3['productivity']
 # X = dat_3.loc[:, dat_3.columns != 'productivity']

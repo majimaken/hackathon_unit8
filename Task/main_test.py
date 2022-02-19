@@ -126,6 +126,6 @@ if __name__ == '__main__':
     response = requests.post(
                             'https://hackathon.unit8.com/api/submit',
                                 headers={'Authorization': 'Token fed877446aa8e41f956b19f86383d493a7a001a1'},
-                                json={'challenge_id': 4, 'submission': 8}
+                                json={'challenge_id': 11, 'submission': "early_bird"}
                                 ) 
     print(response.json())
