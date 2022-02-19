@@ -1,11 +1,11 @@
 from modulefinder import Module
 import random
+emptyIndex = 0
+pT1 = [emptyIndex,4275,2143,1736,2656,3175,2420,1939,2729,2944,2257,1569,3521,1654,3233,4175,2768,2596,3538,3703,3225,2788]
+pT2 = [emptyIndex,3591,2661,3575, 612,3360,3088,3942,2740,3521, 612,4275,3668,2343,3527,3538,3703,3225,2788,3367,3135,2713]
+pT3 = [emptyIndex,2551,2341,2804,3571,3743,5166,2286,2540,1793,4929,4892,3567,2080,3209,4927,3837,3400,4591,4359,6299,3644]
 
-pT1 = [0,10,1]
-pT2 = [0,1,10]
-pT3 = [0,5,5]
-
-jobId = [1, 2]
+jobId = list(range(1,21+1))
 jobWaitingLounge = []
 triedCombinations =[]
 
@@ -36,12 +36,11 @@ for iteration in range(1,10):
     if jobWaitingLounge in triedCombinations:
         break
     triedCombinations.append(jobId.copy())
-    print(jobId)
     time = 0
     while True:
-        if time > 1000:
-            print("timeout reached!")
-            exit()
+        #if time > 10000000:
+            #print("timeout reached!")
+            #exit()
         time += 1
         if (Module1):
             Module1Timer += 1
@@ -88,7 +87,7 @@ for iteration in range(1,10):
             if time < quickestTime:
                 quickestTime = time
                 quickestId = jobId.copy()
-            print(time)
+                print(quickestId); print(quickestTime)
             break          
 
 print("final result:")        
