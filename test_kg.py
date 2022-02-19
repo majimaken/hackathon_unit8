@@ -22,7 +22,7 @@ Created on Fri Feb 18 16:58:53 2022
 import pandas as pd
 import numpy as np
 
-np.random.seed(7)
+np.random.seed(8)
 
 one = np.arange(1,22)
 two = np.arange(22, 40)
@@ -47,3 +47,8 @@ job_order = {"A": one_rand,
              "D": four_rand}
 
 print(job_order)
+
+
+# Create data set
+##############################
+
