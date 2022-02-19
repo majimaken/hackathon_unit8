@@ -48,7 +48,3 @@ job_order = {"A": one_rand,
 
 print(job_order)
 
-
-# Create data set
-##############################
-
