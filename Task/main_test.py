@@ -12,24 +12,20 @@ if __name__ == '__main__':
     # ----- EXAMPLE OF MAIN CHALLENGE SUBMISSION ----- #
     ####################################################
 
-<<<<<<< Updated upstream
-    job_order = {'A': [11,12,14,17,18,19,20,21,1,2,3,4,5,6,7,8,9,10,13,15,16], 
-                 'B': [33, 23, 29, 39, 24, 34, 28, 38, 32, 22, 25, 26, 37, 30, 35, 31, 27, 36], 
-                 'C': [65, 64, 59, 43, 57, 61, 52, 41, 48, 56, 54, 55, 46, 44, 62, 47, 45, 49, 53, 50, 63, 51, 42, 40, 58, 60], 
-                 'D': [70, 72, 66, 67, 71, 68, 73, 69]}
+    job_order = {'A': [ 7,  8,  5, 12, 14, 13, 15, 11,  3, 19, 16,  2, 20,  1, 17, 21,  9,  6, 10, 18,  4], 
+                 'B': [35, 33, 25, 30, 22, 36, 26, 39, 34, 23, 27, 37, 28, 24, 38, 31, 32, 29], 
+                 'C': [54, 43, 58, 61, 63, 41, 64, 48, 49, 56, 52, 60, 65, 45, 57, 51, 59, 44, 62, 46, 42, 53, 47, 40, 50, 55], 
+                 'D': [70, 73, 66, 69, 71, 68, 67, 72]}
 
 
     # define the job order for each line
     # each job from each line has to be in the list corresponding to the line exactly once
-=======
     # # define the job order for each line
     # # each job from each line has to be in the list corresponding to the line exactly once
->>>>>>> Stashed changes
     # job_order = {"A": [i for i in range(1, 22)],
     #              "B": [i for i in range(22, 40)],
     #              "C": [i for i in range(40, 66)],
     #              "D": [i for i in range(66, 74)]}
-<<<<<<< Updated upstream
     # submission has to have the format dict("job_order": dict(string_keys: list of integers))
     submission = {"job_order": job_order}
 
@@ -57,7 +53,6 @@ if __name__ == '__main__':
     # # ----- EXAMPLE OF SIDE CHALLENGE RESOURCE RETRIEVAL ----- #
     # ############################################################
 
-=======
     # # submission has to have the format dict("job_order": dict(string_keys: list of integers))
     # submission = {"job_order": job_order}
     #
@@ -85,7 +80,6 @@ if __name__ == '__main__':
     # # ----- EXAMPLE OF SIDE CHALLENGE RESOURCE RETRIEVAL ----- #
     # ############################################################
     #
->>>>>>> Stashed changes
     # # resource retrieval needs to follow the format dict("challenge_id": integer)
     # submission_side_challenge = {"challenge_id": 1}  # the challenge id indicated in the documentation
     # response = requests.get('https://hackathon.unit8.com/api/get_resource',
@@ -98,7 +92,6 @@ if __name__ == '__main__':
     # # ----- EXAMPLE OF SIDE CHALLENGE SUBMISSION ----- #
     # ####################################################
 
-<<<<<<< Updated upstream
     # submission_side_challenge = {"challenge_id": 1,  # the challenge id indicated in the documentation
     #                              "submission": "This submission is a test"  # your solution
     #                              }
@@ -107,7 +100,6 @@ if __name__ == '__main__':
     #                          json=submission_side_challenge
     #                          )
     # print(response.json())
-=======
     submission_side_challenge = {"challenge_id": 6,  # the challenge id indicated in the documentation
                                  "submission": "467"  # your solution
                                  }
@@ -117,4 +109,3 @@ if __name__ == '__main__':
                              json=submission_side_challenge
                              )
     print(response.json())
->>>>>>> Stashed changes
