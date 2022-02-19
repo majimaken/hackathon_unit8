@@ -1,12 +1,13 @@
 from modulefinder import Module
 import random
 
-pT1 = [0,1,2,3,3]
-pT2 = [0,4,5,5,5]
-pT3 = [0,7,8,9,9]
+pT1 = [0,10,1]
+pT2 = [0,1,10]
+pT3 = [0,5,5]
 
-jobId = [1, 2, 3, 4]
+jobId = [1, 2]
 jobWaitingLounge = []
+triedCombinations =[]
 
 Module1 = 0
 Module1Timer = 0
@@ -31,9 +32,11 @@ quickestTime = 9999999999
 
 for iteration in range(1,10):
     random.shuffle(jobId)
-    print(jobId)
     jobWaitingLounge = jobId.copy()
-
+    if jobWaitingLounge in triedCombinations:
+        break
+    triedCombinations.append(jobId.copy())
+    print(jobId)
     time = 0
     while True:
         if time > 1000:
@@ -92,19 +95,3 @@ print("final result:")
 print(quickestId)
 print(quickestTime)
             
-                    
-            
-            
-    
-
- 
-        
- 
- 
-       
-        
-        
-    
-    
-    
-    
