@@ -45,7 +45,7 @@ if __name__ == '__main__':
                              )
 
     # convert the response object to a dictionary for further processing
-    print(response.text)
+    # print(response.text)
     response = response.json()
     print(response)
 
@@ -100,12 +100,12 @@ if __name__ == '__main__':
     #                          json=submission_side_challenge
     #                          )
     # print(response.json())
-    submission_side_challenge = {"challenge_id": 6,  # the challenge id indicated in the documentation
-                                 "submission": "467"  # your solution
-                                 }
-    response = requests.post('https://hackathon.unit8.com/api/submit',
-                             headers={'Authorization': f'Token {TOKEN_ID}',
-                                      'Content-Type': 'application/json'},
-                             json=submission_side_challenge
-                             )
-    print(response.json())
+    # submission_side_challenge = {"challenge_id": 6,  # the challenge id indicated in the documentation
+    #                              "submission": "467"  # your solution
+    #                              }
+    # response = requests.post('https://hackathon.unit8.com/api/submit',
+    #                          headers={'Authorization': f'Token {TOKEN_ID}',
+    #                                   'Content-Type': 'application/json'},
+    #                          json=submission_side_challenge
+    #                          )
+    # print(response.json())
