@@ -59,9 +59,14 @@ quickestTime = 9999999999
 
 for iteration in range(1,100000):
     random.shuffle(jobId)
+    jobId.remove(31-offsetLine)
+    jobId.remove(32-offsetLine) #or 44
+    jobId.insert(0,31-offsetLine)
+    jobId.insert(39,32-offsetLine) 
+
     jobWaitingLounge = jobId.copy()
     if jobWaitingLounge in triedCombinations:
-        break
+        continue
     triedCombinations.append(jobId.copy())
     time = 0
     while True:
@@ -160,7 +165,14 @@ for iteration in range(1,100000):
                 quickestTime = time
                 quickestId = jobId.copy()
                 quickestId = [x+offsetLine for x in quickestId]
-                print(quickestId); print(itemgetter(*jobId.copy())(pT1)); print(quickestTime); print("Iteration:"); print(iteration)
+                print(quickestId); 
+                print(itemgetter(*jobId.copy())(pT1)); 
+                print(itemgetter(*jobId.copy())(pT2)); 
+                print(itemgetter(*jobId.copy())(pT3)); 
+                print(itemgetter(*jobId.copy())(pT4)); 
+                print(itemgetter(*jobId.copy())(pT5)); 
+                print(itemgetter(*jobId.copy())(pT6)); 
+                print(quickestTime); print("Iteration:"); print(iteration)
             break          
 
 print("final result:")        
