@@ -34,7 +34,7 @@ for iteration in range(1,100000):
     random.shuffle(jobId)
     jobWaitingLounge = jobId.copy()
     if jobWaitingLounge in triedCombinations:
-        break
+        continue
     triedCombinations.append(jobId.copy())
     time = 0
     while True:

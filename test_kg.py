@@ -138,3 +138,138 @@ Created on Fri Feb 18 16:58:53 2022
 
 
 
+
+
+
+
+
+
+# Challenge 5
+###########################################
+
+# import requests
+# import seaborn as sns
+# from scipy import stats
+# import numpy as np
+# import pandas as pd
+
+# response_5 = requests.get('https://hackathon.unit8.com/api/get_resource',
+#              headers={'Authorization': 'Token fed877446aa8e41f956b19f86383d493a7a001a1'},
+#              json={'challenge_id': 5}
+# )
+
+# dic_5 = response_5.json()
+# dat_5 = pd.read_json(dic_5, orient = "columns")
+
+# dat_5_sorted = [372,310,325,642,436,237,363,983,339,283,823,365,195,219,352,28,616,710,391,375,596,249,260,456,693,100,797,256,511,113]
+# dat_5_sorted.sort()
+# print(dat_5_sorted)
+
+# sns.pairplot(dat_5) 
+
+# z = np.abs(stats.zscore(dat_5))
+# print(np.where(z > 3))
+
+
+# dat_5.nlargest(10, "temperature_on_line C")
+
+# sns.histplot(dat_5["temperature_on_line C"])
+# sns.histplot(dat_5["time_spent_on_line s"])
+
+
+
+
+
+
+
+# Challenge 2
+###################################################
+
+import requests
+import seaborn as sns
+from scipy import stats
+import numpy as np
+import pandas as pd
+import json
+
+response_2 = requests.get('https://hackathon.unit8.com/api/get_resource',
+                          headers={'Authorization': 'Token fed877446aa8e41f956b19f86383d493a7a001a1'},
+                          json={'challenge_id': 2}
+                          )
+
+dic_2 = response_2.json()
+dic_2 = json.loads(dic_2)
+
+dic_2_train = dic_2["train"]
+dic_2_test = dic_2["test"]
+
+dat_2_train = pd.DataFrame.from_dict(dic_2_train, orient='index')
+dat_2_test = pd.DataFrame.from_dict(dic_2_test, orient='index')
+
+# 
+
+# Split into predictor and features
+y_train = dat_2_train.loc["label"]
+x_train = dat_2_train.loc["1":"18"].T
+
+x_test = dat_2_test.loc["1":"18"].T
+
+# Set row 1 and 18 to factors
+y_train = y_train.astype("category")
+x_train["1"] = x_train["1"].astype("category")
+x_train["18"] = x_train["18"].astype("category")
+x_test["1"] = x_test["1"].astype("category")
+x_test["18"] = x_test["18"].astype("category")
+
+
+
+
+# Logistic regression
+###########################################################
+
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report, confusion_matrix
+
+model = LogisticRegression(solver='newton-cg', random_state=0)
+model.fit(x_train, y_train)
+pred = model.predict(x_test).tolist()
+
+# Getting indices
+ind = x_test.index.tolist()
+
+# Dictionary
+res = dict(zip(ind, pred))
+
+res_int = {int(key):res[key] for key in res}
+
+
+
+
+# Random forest
+###########################################################
+
+# from sklearn.ensemble import RandomForestClassifier
+# from sklearn.datasets import make_classification
+
+# X, y = make_classification(n_samples=1000, n_features=4,
+#                             n_informative=2, n_redundant=0,
+#                             random_state=0, shuffle=False)
+
+# clf = RandomForestClassifier(max_depth=2, random_state=0)
+# clf.fit(x_train, y_train)
+
+# from sklearn.ensemble import RandomForestClassifier
+
+# #Create a Gaussian Classifier
+# clf=RandomForestClassifier(n_estimators=10000, random_state = 42)
+
+# #Train the model using the training sets y_pred=clf.predict(X_test)
+# clf.fit(x_train, y_train)
+
+# y_pred=clf.predict(x_test)
+
+# # Dictionary
+# ind = x_test.index.tolist()
+# res = dict(zip(ind, y_pred))
+# res_int = {int(key):res[key] for key in res}
