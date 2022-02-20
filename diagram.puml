@@ -1,28 +1,46 @@
-@startuml
-participant "Waiting Lounge" 
-
+@startuml  
 box "Line A"
-participant "Module A1"
-queue "Buffer A1.2"
-queue "Buffer A1.1"
-participant "Module A2"
-queue "Buffer A2.2"
-queue "Buffer A2.1"
-participant "Module A3"
+participant "Waiting Lounge"
+participant "Module 1"
+queue "Buffer 1.1"
+queue "Buffer 1.2"
+participant "Module 2"
+queue "Buffer 2.1"
+queue "Buffer 2.2"
+participant "Module 3"
 end box
 
-box "Line B"
-participant "Module B1"
-queue "Buffer B1.1"
-queue "Buffer B1.2"
-participant "Module B2"
-queue "Buffer B2.1"
-queue "Buffer B2.2"
-participant "Module B3"
-end box
+"Waiting Lounge" -> "Module 1": 10 m 
+activate "Module 1"
+note left: Job1
+"Module 1" -> "Module 1": production time
+"Module 1" -> "Buffer 1.1": 10 m
+"Buffer 1.1" -> "Buffer 1.2": immediately
+deactivate "Module 1"
+activate "Module 2"
+"Buffer 1.2" -> "Module 2" : 10 m
 
-"Waiting Lounge" -> "Module 1"
-"Module 1" -> "Module 2"
-"Module 2" -> "Module 3"
+"Waiting Lounge" -> "Module 1": 10 m 
+activate "Module 1"
+note left: Job2
+"Module 1" -> "Module 1": production time
+"Module 2" -> "Module 2": production time
+"Module 1" -> "Buffer 1.1": 10 m 
+"Buffer 1.1" -> "Buffer 1.2": immediately
+deactivate "Module 1"
+activate "Buffer 1.2"
+"Buffer 1.2" -> "Buffer 1.2": waiting time 
+"Module 2" -> "Buffer 2.1": 10 m
+deactivate "Buffer 1.2"
+deactivate "Module 2"
+"Buffer 1.2" -> "Module 2": 10 m
+activate "Module 2"
+"Buffer 2.1" -> "Buffer 2.2"
+"Module 2" -> "Buffer 2.1"
 
+"Buffer 2.2" -> "Module 3"
+"Module 3" -> 
+"Buffer 2.1" -> "Buffer 2.2"
+"Buffer 2.2" -> "Module 3"
+"Module 3" -> 
 @enduml
