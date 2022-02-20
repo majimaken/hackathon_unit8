@@ -12,7 +12,7 @@ if __name__ == '__main__':
     ####################################################
     # ----- EXAMPLE OF MAIN CHALLENGE SUBMISSION ----- #
     ####################################################
-    #
+
     job_order = {'A': [11, 14, 10, 2, 7, 21, 17, 12, 13, 18, 20, 8, 16, 1, 4, 5, 9, 19, 15, 3, 6],
                  'B': [31, 33, 37, 23, 35, 27, 39, 34, 24, 22, 30, 38, 28, 26, 25, 36, 29, 32],
                  'C': [62, 61, 43, 56, 54, 65, 59, 49, 44, 63, 60, 64, 52, 45, 47, 48, 55, 51, 53, 57, 42, 58, 46, 50, 40, 41],
@@ -122,7 +122,7 @@ if __name__ == '__main__':
 
     # submission_side_challenge = {"challenge_id": 4,  # the challenge id indicated in the documentation
     #                               "submission": "8"  # your solution
-    # #                               }
+    # # #                               }
     # response = requests.post(
     #     'https://hackathon.unit8.com/api/submit',
     #     headers={'Authorization': 'Token fed877446aa8e41f956b19f86383d493a7a001a1'},
@@ -148,7 +148,7 @@ if __name__ == '__main__':
     #                                             519: 0.0,
     #                                             79: 1.0,
     #                                             1059: 1.0,
-    #                                             1073: 0.0,
+    #                                             1073: 1.0,
     #                                             1097: 1.0,
     #                                             346: 0.0,
     #                                             226: 1.0,
