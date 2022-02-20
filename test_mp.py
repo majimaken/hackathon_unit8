@@ -33,11 +33,3 @@ from sklearn import linear_model
 # # start = min(df.time)
 # # end = max(df.time)
 # # dif = end - start
-
-response = requests.get(
-    'https://hackathon.unit8.com/api/get_resource',
-    headers={'Authorization': 'Token fed877446aa8e41f956b19f86383d493a7a001a1'},
-    json={'challenge_id': 5}
-)
-
-print(response.json)
