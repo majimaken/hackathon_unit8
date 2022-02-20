@@ -13,20 +13,20 @@ if __name__ == '__main__':
     # ----- EXAMPLE OF MAIN CHALLENGE SUBMISSION ----- #
     ####################################################
     #
-    job_order = {'A': [ 7,  8,  5, 12, 14, 13, 15, 11,  3, 19, 16,  2, 20,  1, 17, 21,  9,  6, 10, 18,  4],
-                 'B': [35, 33, 25, 30, 22, 36, 26, 39, 34, 23, 27, 37, 28, 24, 38, 31, 32, 29],
-                 'C': [62, 56, 57, 63, 43, 61, 65, 48, 49, 51, 55, 50, 58, 54, 59, 64, 45, 47, 53, 40, 52, 46, 60, 44, 41, 42],
-                 'D': [70, 73, 66, 69, 71, 68, 67, 72]}
+    job_order = {'A': [11, 14, 10, 2, 7, 21, 17, 12, 13, 18, 20, 8, 16, 1, 4, 5, 9, 19, 15, 3, 6],
+                 'B': [25, 24, 34, 22, 39, 31, 26, 38, 35, 23, 30, 28, 27, 33, 36, 29, 37, 32],
+                 'C': [43, 41, 54, 50, 44, 47, 48, 65, 55, 56, 53, 64, 52, 49, 51, 62, 57, 59, 45, 63, 60, 46, 61, 58, 40, 42],
+                 'D': [70, 72, 69, 68, 71, 73, 67, 66]}
 
     # define the job order for each line
     # each job from each line has to be in the list corresponding to the line exactly once
-    # # define the job order for each line
-    # # each job from each line has to be in the list corresponding to the line exactly once
+    # define the job order for each line
+    # each job from each line has to be in the list corresponding to the line exactly once
     # job_order = {"A": [i for i in range(1, 22)],
     #              "B": [i for i in range(22, 40)],
     #              "C": [i for i in range(40, 66)],
     #              "D": [i for i in range(66, 74)]}
-    # # submission has to have the format dict("job_order": dict(string_keys: list of integers))
+    # submission has to have the format dict("job_order": dict(string_keys: list of integers))
     submission = {"job_order": job_order}
     #
     # """
@@ -40,12 +40,13 @@ if __name__ == '__main__':
     #     - log: a log file containing all information of the processing of all modules (as dictionary (!))
     # """
     response = requests.post('https://hackathon.unit8.com/api/submit',
-                             headers={'Authorization': f'Token {TOKEN_ID}', 'Content-Type': 'application/json'},
+                             headers={'Authorization': f'Token {TOKEN_ID}',
+                                      'Content-Type': 'application/json'},
                              json=submission
                              )
     #
     # # convert the response object to a dictionary for further processing
-    # # print(response.text)
+    # print(response.text)
     response = response.json()
     print(response)
 
@@ -87,17 +88,16 @@ if __name__ == '__main__':
     #                         json=submission_side_challenge
     #                         )
     # print(response.json())
-    
+
     # dic = response.json()
     # info = json.loads(dic)
-    
+
     # dat_3 = pd.read_json(dic, orient = "columns")
-    
-    # df = pd.DataFrame.from_dict({(i,j): info[i][j] 
-    #                        for i in info.keys() 
+
+    # df = pd.DataFrame.from_dict({(i,j): info[i][j]
+    #                        for i in info.keys()
     #                        for j in info[i].keys()},
     #                    orient='index')
-    
 
     # ####################################################
     # # ----- EXAMPLE OF SIDE CHALLENGE SUBMISSION ----- #
@@ -122,10 +122,10 @@ if __name__ == '__main__':
 
     # submission_side_challenge = {"challenge_id": 4,  # the challenge id indicated in the documentation
     #                               "submission": "8"  # your solution
-    #                               }
+    # #                               }
     # response = requests.post(
     #                         'https://hackathon.unit8.com/api/submit',
     #                             headers={'Authorization': 'Token fed877446aa8e41f956b19f86383d493a7a001a1'},
     #                             json={'challenge_id': 11, 'submission': "early_bird"}
-    #                             ) 
+    #                             )
     # print(response.json())
