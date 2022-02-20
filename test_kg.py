@@ -191,6 +191,8 @@ from scipy import stats
 import numpy as np
 import pandas as pd
 import json
+from pathlib import Path
+import os
 
 response_2 = requests.get('https://hackathon.unit8.com/api/get_resource',
                           headers={'Authorization': 'Token fed877446aa8e41f956b19f86383d493a7a001a1'},
@@ -206,7 +208,9 @@ dic_2_test = dic_2["test"]
 dat_2_train = pd.DataFrame.from_dict(dic_2_train, orient='index')
 dat_2_test = pd.DataFrame.from_dict(dic_2_test, orient='index')
 
-# 
+# Save dataframes as .csv for R
+# dat_2_train.to_csv("Ken\data2_train.csv", index = True)
+# dat_2_test.to_csv("Ken\data2_test.csv", index = True)
 
 # Split into predictor and features
 y_train = dat_2_train.loc["label"]
