@@ -1,5 +1,6 @@
 from modulefinder import Module
 import random
+from operator import itemgetter 
 emptyIndex = 0
 offsetLine = 39
 pT1 = [emptyIndex,2059,1790,1935,1568, 572,1218,1604, 572,1308, 572,1630,5938, 572,1656,1578, 572,1632,1590,1396,1251,1694,1091, 572,1425,1630,1668]
@@ -8,7 +9,7 @@ pT3 = [emptyIndex,572, 572, 572,1595,1728, 572, 572, 572,1416,1413, 572,1432,138
 pT4 = [emptyIndex,572, 572, 572, 572, 572,1072,1110, 572, 572,1447, 572, 572, 572,1315, 572, 572,1334, 572,1590, 572, 572, 572, 572, 572, 572, 572]
 pT5 = [emptyIndex,572, 572, 572,6587, 572, 572, 572, 572,1432,1191,1358, 572,1375, 572, 572,1475,1756, 572, 572,1249,1609,1120,1275,1110,1730,1477]
 pT6 = [emptyIndex,572, 572, 572, 572, 572, 572, 572,1268, 572,1582,1480,1289, 572, 572,1630, 572,1656,1733, 572,1296,1330,1416, 572,1458,1730, 572]
-pT7 = [emptyIndex,286, 286, 286, 286,1315, 853,1392, 286,1127, 286,1211, 286, 286,1225, 286, 286,1315, 286,1022, 286, 286,1215, 910, 286,1463, 655]
+pT7 = [emptyIndex,286, 286, 286, 286,1315, 853,1392, 286,1127, 286,1211, 286, 286,1225, 286, 286,1315, 286,1022, 286, 286,1215, 910, 286,1463, 1163] #655
 
 jobId = list(range(40-offsetLine,65+1-offsetLine))
 jobWaitingLounge = [],
@@ -57,7 +58,7 @@ quickestId = []
 quickestTime = 9999999999
 
 
-for iteration in range(1,10000):
+for iteration in range(1,1000000):
     random.shuffle(jobId)
     jobWaitingLounge = jobId.copy()
     if jobWaitingLounge in triedCombinations:
@@ -159,7 +160,8 @@ for iteration in range(1,10000):
             if time < quickestTime:
                 quickestTime = time
                 quickestId = jobId.copy()
-                print(quickestId); print(quickestTime)
+                quickestId = [x+offsetLine for x in quickestId]
+                print(quickestId); print(itemgetter(*jobId.copy())(pT1)); print(quickestTime); print("Iteration:"); print(iteration)
             break          
 
 print("final result:")        

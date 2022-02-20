@@ -13,10 +13,10 @@ if __name__ == '__main__':
     # ----- EXAMPLE OF MAIN CHALLENGE SUBMISSION ----- #
     ####################################################
     #
-    # job_order = {'A': [ 7,  8,  5, 12, 14, 13, 15, 11,  3, 19, 16,  2, 20,  1, 17, 21,  9,  6, 10, 18,  4],
-    #              'B': [35, 33, 25, 30, 22, 36, 26, 39, 34, 23, 27, 37, 28, 24, 38, 31, 32, 29],
-    #              'C': [54, 43, 58, 61, 63, 41, 64, 48, 49, 56, 52, 60, 65, 45, 57, 51, 59, 44, 62, 46, 42, 53, 47, 40, 50, 55],
-    #              'D': [70, 73, 66, 69, 71, 68, 67, 72]}
+    job_order = {'A': [ 7,  8,  5, 12, 14, 13, 15, 11,  3, 19, 16,  2, 20,  1, 17, 21,  9,  6, 10, 18,  4],
+                 'B': [35, 33, 25, 30, 22, 36, 26, 39, 34, 23, 27, 37, 28, 24, 38, 31, 32, 29],
+                 'C': [62, 56, 57, 63, 43, 61, 65, 48, 49, 51, 55, 50, 58, 54, 59, 64, 45, 47, 53, 40, 52, 46, 60, 44, 41, 42],
+                 'D': [70, 73, 66, 69, 71, 68, 67, 72]}
 
     # define the job order for each line
     # each job from each line has to be in the list corresponding to the line exactly once
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     #              "C": [i for i in range(40, 66)],
     #              "D": [i for i in range(66, 74)]}
     # # submission has to have the format dict("job_order": dict(string_keys: list of integers))
-    # submission = {"job_order": job_order}
+    submission = {"job_order": job_order}
     #
     # """
     # call the API and get back a requests.models.Response object consisting of:
@@ -39,15 +39,15 @@ if __name__ == '__main__':
     #     - score_line_D: the processing time of line D
     #     - log: a log file containing all information of the processing of all modules (as dictionary (!))
     # """
-    # response = requests.post('https://hackathon.unit8.com/api/submit',
-    #                          headers={'Authorization': f'Token {TOKEN_ID}', 'Content-Type': 'application/json'},
-    #                          json=submission
-    #                          )
+    response = requests.post('https://hackathon.unit8.com/api/submit',
+                             headers={'Authorization': f'Token {TOKEN_ID}', 'Content-Type': 'application/json'},
+                             json=submission
+                             )
     #
     # # convert the response object to a dictionary for further processing
     # # print(response.text)
-    # response = response.json()
-    # print(response)
+    response = response.json()
+    print(response)
 
     # ############################################################
     # # ----- EXAMPLE OF SIDE CHALLENGE RESOURCE RETRIEVAL ----- #
@@ -123,9 +123,9 @@ if __name__ == '__main__':
     # submission_side_challenge = {"challenge_id": 4,  # the challenge id indicated in the documentation
     #                               "submission": "8"  # your solution
     #                               }
-    response = requests.post(
-                            'https://hackathon.unit8.com/api/submit',
-                                headers={'Authorization': 'Token fed877446aa8e41f956b19f86383d493a7a001a1'},
-                                json={'challenge_id': 11, 'submission': "early_bird"}
-                                ) 
-    print(response.json())
+    # response = requests.post(
+    #                         'https://hackathon.unit8.com/api/submit',
+    #                             headers={'Authorization': 'Token fed877446aa8e41f956b19f86383d493a7a001a1'},
+    #                             json={'challenge_id': 11, 'submission': "early_bird"}
+    #                             ) 
+    # print(response.json())
