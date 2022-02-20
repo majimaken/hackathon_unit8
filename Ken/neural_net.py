@@ -42,13 +42,36 @@ Created on Sat Feb 19 10:35:20 2022
 
 
 
+# Packages
+import os 
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.neural_network import MLPClassifier
 
-import tensorflow as tf
+# Data prep
+sub = pd.read_excel("submissions.xlsx")
+# Line A
+X = sub["A"]
+Y = sub["Score A"]
 
-model = tf.keras.models.Sequential()
-model.add(tf.keras.layers.Dense(10, input_shape=(2,2), use_bias = False, activation = "relu"))
+x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=1)
 
-# Print the model parameters
-model.summary()
+x_train = x_train.to_list()
+x_test = x_test.to_list()
+y_train = y_train.to_list()
+y_test = y_test.to_list()
+
+mlp = MLPClassifier(hidden_layer_sizes=(8,8,8), activation='relu', solver='adam', max_iter=500)
+mlp.fit(x_train, y_train)
+
+# predict_train = mlp.predict(x_train)
+# predict_test = mlp.predict(x_test)
+
+# a1 = [ 5, 21, 17, 16, 11,  7,  4,  9,  2, 12, 20, 18, 15,  6,  1, 13, 19, 14, 10,  3,  8]
+# a2 = [15 ,13 ,12  ,2  ,4  ,1 ,19  ,6  ,3 ,20  ,9 ,11 ,10 ,17  ,5 ,14 ,21 ,18  ,7 ,16  ,8]
+# a3 = [15,  9,  2, 17, 14,  3, 16, 10, 11,  5,  7, 20, 18,  4, 13, 19,  8, 1,  6, 12, 21]
+
+# X = pd.DataFrame(list(zip(a1, a2, a3)), index = [])
+
 
 
